@@ -7,14 +7,14 @@ import { InitTheme } from '@/providers/Theme/InitTheme'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
-import { Metadata } from 'next'
+import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
 import React from 'react'
 import { cn } from 'src/utilities/cn'
 import './globals.css'
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const { isEnabled } = draftMode()
+  const { isEnabled } = await draftMode()
 
   return (
     <html className={cn(GeistSans.variable, GeistMono.variable)} lang="en" suppressHydrationWarning>

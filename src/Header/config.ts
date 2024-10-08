@@ -1,6 +1,5 @@
-import type { GlobalConfig } from 'payload'
-
 import { headerLink } from '@/fields/headerLink'
+import type { GlobalConfig } from 'payload'
 import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {

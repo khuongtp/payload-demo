@@ -1,12 +1,9 @@
 'use client'
 
-import React from 'react'
-
-import type { Header as HeaderType } from '@/payload-types'
-
 import { CMSLink } from '@/components/Link'
-import Link from 'next/link'
+import type { Header as HeaderType } from '@/payload-types'
 import { SearchIcon } from 'lucide-react'
+import Link from 'next/link'
 
 export const HeaderNav = ({ header }: { header: HeaderType }) => {
   const navItems = header?.navItems || []
@@ -18,7 +15,7 @@ export const HeaderNav = ({ header }: { header: HeaderType }) => {
       })}
       <Link href="/search">
         <span className="sr-only">Search</span>
-        <SearchIcon className="w-5" />
+        <SearchIcon className="w-5 text-primary" />
       </Link>
     </nav>
   )

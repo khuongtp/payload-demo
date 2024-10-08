@@ -1,5 +1,4 @@
 import { cn } from '@/utilities/cn'
-
 import { serializeLexical } from './serialize'
 
 type Props = {
