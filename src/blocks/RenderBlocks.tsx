@@ -1,4 +1,3 @@
-import { cn } from 'src/utilities/cn'
 import React, { Fragment } from 'react'
 
 import type { Page } from '@/payload-types'
@@ -8,6 +7,8 @@ import { CallToActionBlock } from '@/blocks/CallToAction/Component'
 import { ContentBlock } from '@/blocks/Content/Component'
 import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
+import FeaturesBlock from '@/blocks/Features/Component'
+import { TitleBlock } from '@/blocks/Title/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -15,6 +16,8 @@ const blockComponents = {
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
+  titleBlock: TitleBlock,
+  features: FeaturesBlock,
 }
 
 export const RenderBlocks: React.FC<{

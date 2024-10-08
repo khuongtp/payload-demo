@@ -21,7 +21,11 @@ type LinkType = (options?: {
   overrides?: Record<string, unknown>
 }) => Field
 
-export const link: LinkType = ({ appearances, disableLabel = false, overrides = {} } = {}) => {
+export const headerLink: LinkType = ({
+  appearances,
+  disableLabel = false,
+  overrides = {},
+} = {}) => {
   const linkResult: Field = {
     name: 'link',
     type: 'group',
@@ -62,6 +66,18 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
               width: '33%',
             },
             label: 'Open in new tab',
+          },
+          {
+            name: 'isButton',
+            type: 'checkbox',
+            admin: {
+              className: 'no-padding-bottom',
+              style: {
+                alignSelf: 'flex-end',
+              },
+              width: '33%',
+            },
+            label: 'Is button',
           },
         ],
       },
@@ -136,6 +152,12 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       options: appearanceOptionsToUse,
     })
   }
+
+  // linkResult.fields.push({
+  //   name: 'children',
+  //   type: 'array',
+  //   fields: [headerLink({ appearances: false })],
+  // })
 
   return deepMerge(linkResult, overrides)
 }

@@ -1,5 +1,4 @@
 import { cn } from '@/utilities/cn'
-import React from 'react'
 
 import { serializeLexical } from './serialize'
 
@@ -10,12 +9,7 @@ type Props = {
   enableProse?: boolean
 }
 
-const RichText: React.FC<Props> = ({
-  className,
-  content,
-  enableGutter = true,
-  enableProse = true,
-}) => {
+const RichText = ({ className, content, enableGutter = true, enableProse = true }: Props) => {
   if (!content) {
     return null
   }

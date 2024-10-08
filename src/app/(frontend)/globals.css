@@ -101,3 +101,73 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+@layer base {
+  .display-1 {
+    font-size: 72px;
+    line-height: 78px;
+    letter-spacing: -3px;
+  }
+
+  .display-2 {
+    font-size: 64px;
+    line-height: 72px;
+    letter-spacing: -2.6px;
+  }
+
+  .display-3 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    letter-spacing: -2px;
+  }
+
+  .headline-1 {
+    font-size: 36px;
+    line-height: 46px;
+    letter-spacing: -1.6px;
+  }
+
+  .headline-2 {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 34px;
+    letter-spacing: -0.8px;
+  }
+
+  .headline-3 {
+    font-size: 22px;
+    line-height: 32px;
+    letter-spacing: -0.4px;
+  }
+
+  .headline-4 {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+  }
+
+  .headline-5 {
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: -0.36px;
+  }
+
+  .headline-6 {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+
+  .paragraph-1 {
+    font-size: 18px;
+    line-height: 28px;
+    letter-spacing: -0.4px;
+  }
+
+  .paragraph-2 {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: -0.3px;
+  }
+}

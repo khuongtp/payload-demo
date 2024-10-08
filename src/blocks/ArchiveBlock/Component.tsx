@@ -7,11 +7,11 @@ import RichText from '@/components/RichText'
 
 import { CollectionArchive } from '@/components/CollectionArchive'
 
-export const ArchiveBlock: React.FC<
-  ArchiveBlockProps & {
+export const ArchiveBlock = async (
+  props: ArchiveBlockProps & {
     id?: string
-  }
-> = async (props) => {
+  },
+) => {
   const { id, categories, introContent, limit: limitFromProps, populateBy, selectedDocs } = props
 
   const limit = limitFromProps || 3
