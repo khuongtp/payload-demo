@@ -9,8 +9,19 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      name: 'navItems',
-      type: 'array',
+      //     // name: 'navItems',
+      //     // type: 'array',
+      //     // fields: [
+      //     //   link({
+      //     //     appearances: false,
+      //     //   }),
+
+      //     // ],
+      //     // maxRows: 6,
+      //   },
+      // ],
+      name: 'navItems', // required
+      type: 'array', // required
       label: 'heading',
       fields: [
         {
