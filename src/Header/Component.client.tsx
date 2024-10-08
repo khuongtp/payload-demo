@@ -7,6 +7,7 @@ import React, { useEffect, useState } from 'react'
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
+import { HeaderButton } from './Button'
 import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
@@ -18,6 +19,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
   const [theme, setTheme] = useState<string | null>(null)
   const { headerTheme, setHeaderTheme } = useHeaderTheme()
   const pathname = usePathname()
+  const buttonItems = header?.buttonItems || []
 
   useEffect(() => {
     setHeaderTheme(null)
@@ -35,9 +37,15 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ header }) => {
       {...(theme ? { 'data-theme': theme } : {})}
     >
       <Link href="/">
-        <Logo />
+        <Logo header={header} />
       </Link>
       <HeaderNav header={header} />
+
+      <div className="flex items-center gap-12 font-bold">
+        {buttonItems.map(({ ...props }, i) => {
+          return <HeaderButton key={i} {...props} />
+        })}
+      </div>
     </header>
   )
 }
