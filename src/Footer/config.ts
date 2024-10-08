@@ -11,62 +11,23 @@ export const Footer: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
-      fields: [
-        link({
-          appearances: false,
-        }),
-      ],
-      maxRows: 6,
-    },
-    { name: 'socialLinks', type: 'array', fields: [link({ appearances: false })] },
-    {
-      name: 'addresses',
-      type: 'array',
+      label: 'heading',
       fields: [
         {
+          name: 'label',
           type: 'text',
-          name: 'Country',
         },
         {
+          name: 'groups',
           type: 'array',
-          name: 'locations',
-
           fields: [
             {
-              type: 'row',
-              fields: [
-                {
-                  type: 'text',
-                  name: 'phone',
-                },
-                {
-                  type: 'text',
-                  name: 'locationName',
-                },
-                {
-                  type: 'text',
-                  name: 'fullAddress',
-                },
-              ],
+              name: 'label',
+              type: 'text',
             },
           ],
         },
       ],
-    },
-    {
-      name: 'certificates',
-      type: 'array',
-      fields: [
-        {
-          type: 'upload',
-          name: 'image',
-          relationTo: 'media',
-        },
-      ],
-    },
-    {
-      name: 'email',
-      type: 'email',
     },
   ],
   hooks: {

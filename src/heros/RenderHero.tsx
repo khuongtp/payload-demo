@@ -1,15 +1,19 @@
+import React from 'react'
+
+import type { Page } from '@/payload-types'
 import { HighImpactHero } from '@/heros/HighImpact'
 import { LowImpactHero } from '@/heros/LowImpact'
 import { MediumImpactHero } from '@/heros/MediumImpact'
-import type { Page } from '@/payload-types'
+import { CustomImpactHero } from '@/heros/CustomImpact'
 
 const heroes = {
   highImpact: HighImpactHero,
   lowImpact: LowImpactHero,
   mediumImpact: MediumImpactHero,
+  customImpact: CustomImpactHero,
 }
 
-export const RenderHero = (props: Page['hero']) => {
+export const RenderHero: React.FC<Page['hero']> = (props) => {
   const { type } = props || {}
 
   if (!type || type === 'none') return null
