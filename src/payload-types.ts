@@ -62,7 +62,7 @@ export interface Page {
   id: string;
   title: string;
   hero: {
-    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact';
+    type: 'none' | 'highImpact' | 'mediumImpact' | 'lowImpact' | 'customImpact';
     richText?: {
       root: {
         type: string;
@@ -714,6 +714,15 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  buttonItems?:
+    | {
+        url?: string | null;
+        label?: string | null;
+        appearance?: ('outline' | 'default') | null;
+        id?: string | null;
+      }[]
+    | null;
+  logo?: (string | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -725,16 +734,13 @@ export interface Footer {
   id: string;
   navItems?:
     | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-          label: string;
-        };
+        label?: string | null;
+        groups?:
+          | {
+              label?: string | null;
+              id?: string | null;
+            }[]
+          | null;
         id?: string | null;
       }[]
     | null;
