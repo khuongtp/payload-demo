@@ -97,7 +97,15 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | FeaturesBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | FeaturesBlock
+    | CustomContentBlock
+  )[];
   meta?: {
     title?: string | null;
     image?: (string | null) | Media;
@@ -572,6 +580,33 @@ export interface Feature {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomContentBlock".
+ */
+export interface CustomContentBlock {
+  columns?:
+    | {
+        enableLink?: boolean | null;
+        contentLogo: string | Media;
+        link?: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -766,7 +801,7 @@ export interface Header {
  */
 export interface Footer {
   id: string;
-  navItems?:
+  footerItems?:
     | {
         label?: string | null;
         groups?:
@@ -778,6 +813,7 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  footerLogo?: (string | null) | Media;
   updatedAt?: string | null;
   createdAt?: string | null;
 }

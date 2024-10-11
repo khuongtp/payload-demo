@@ -19,6 +19,7 @@ import { Features } from '../../blocks/Features/config'
 import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidatePage } from './hooks/revalidatePage'
+import { CustomContent } from '../../blocks/CustomContent/config'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -68,7 +69,15 @@ export const Pages: CollectionConfig = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [CallToAction, Content, MediaBlock, Archive, FormBlock, Features],
+              blocks: [
+                CallToAction,
+                Content,
+                MediaBlock,
+                Archive,
+                FormBlock,
+                Features,
+                CustomContent,
+              ],
               required: true,
             },
           ],

@@ -7,15 +7,18 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { TitleBlock } from '@/blocks/Title/Component'
 import type { Page } from '@/payload-types'
 import React, { Fragment } from 'react'
+import { CustomContentBlock } from '@/blocks/CustomContent/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   content: ContentBlock,
+  customContent: CustomContentBlock,
   cta: CallToActionBlock,
   formBlock: FormBlock,
   mediaBlock: MediaBlock,
   titleBlock: TitleBlock,
   features: FeaturesBlock,
+
 }
 
 export const RenderBlocks: React.FC<{
