@@ -1,4 +1,3 @@
-import { link } from '@/fields/link'
 import type { GlobalConfig } from 'payload'
 import { revalidateFooter } from './hooks/revalidateFooter'
 
@@ -9,20 +8,9 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-      //     // name: 'navItems',
-      //     // type: 'array',
-      //     // fields: [
-      //     //   link({
-      //     //     appearances: false,
-      //     //   }),
-
-      //     // ],
-      //     // maxRows: 6,
-      //   },
-      // ],
-      name: 'navItems', // required
-      type: 'array', // required
-      label: 'heading',
+      name: 'footerItems',
+      type: 'array',
+      label: 'Footer Content',
       fields: [
         {
           name: 'label',
@@ -39,6 +27,13 @@ export const Footer: GlobalConfig = {
           ],
         },
       ],
+      maxRows: 3,
+    },
+    {
+      name: 'footerLogo',
+      type: 'upload',
+      relationTo: 'media',
+      required: false,
     },
   ],
   hooks: {

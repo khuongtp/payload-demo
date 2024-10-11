@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import React from 'react'
 type FooterType = {
   label?: string | null
@@ -12,19 +13,17 @@ type FooterType = {
 export const FooterNav: React.FC<FooterType> = (props) => {
   const { label, groups } = props
   return (
-    <div>
-      <h2 className="font-bold mb-4">{label}</h2>
-      <ul className="space-y-2">
-        {groups?.map((element, i) => {
+    <div className="w-[160px] mr-5">
+      <h3 className="font-bold mb-4">{label}</h3>
+      <div className="flex flex-col opacity-50 text-sm space-y-4">
+        {groups?.map((group, i) => {
           return (
-            <li key={i}>
-              <a href="#" className="hover:underline">
-                {element.label}
-              </a>
-            </li>
+            <Link key={i} href={'#'}>
+              {group.label}
+            </Link>
           )
         })}
-      </ul>
+      </div>
     </div>
   )
 }
