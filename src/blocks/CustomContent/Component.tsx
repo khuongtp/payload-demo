@@ -2,7 +2,8 @@ import React from 'react'
 
 import type { Page } from '@/payload-types'
 import Link from 'next/link'
-import RichText from '@/components/RichText'
+import { HomeContent } from './Content'
+import { HomeFeature } from './Feature'
 
 type Props = Extract<Page['layout'][0], { blockType: 'customContent' }>
 
@@ -12,11 +13,12 @@ export const CustomContentBlock: React.FC<
   } & Props
 > = (props) => {
   const { columns } = props
-  console.log('>>>>> ', columns)
   return (
     <>
+      <HomeContent />
+      <HomeFeature />
       {columns?.map((col, index) => {
-        const { enableLink, link, contentLogo } = col
+        const { link, contentLogo } = col
         const DEFAULT_LOGO = '/api/media/file/content.png'
         const url = typeof contentLogo === 'string' ? DEFAULT_LOGO : (contentLogo?.url ?? '')
 
