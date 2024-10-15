@@ -8,8 +8,10 @@ import configPromise from '@payload-config'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
 import type { Metadata } from 'next'
 import { draftMode } from 'next/headers'
-import { cache } from 'react'
 import PageClient from './page.client'
+import React, { cache } from 'react'
+import { OurService } from '@/components/OurService'
+import { RatingComponent } from '@/components/Rating'
 
 export async function generateStaticParams() {
   const payload = await getPayloadHMR({ config: configPromise })
@@ -65,6 +67,8 @@ export default async function Page({ params: paramsPromise }: Args) {
       <PayloadRedirects disableNotFound url={url} />
 
       <RenderHero {...hero} />
+      <OurService />
+      <RatingComponent />
       <RenderBlocks blocks={layout} />
     </article>
   )

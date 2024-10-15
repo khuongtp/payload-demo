@@ -5,6 +5,9 @@ import RichText from '@/components/RichText'
 import type { Page } from '@/payload-types'
 import { useHeaderTheme } from '@/providers/HeaderTheme'
 import React, { useEffect } from 'react'
+import BannerRight from 'src/access/images/banner-right-home.png'
+import "./style.css"
+import Image from 'next/image'
 
 export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
   const { setHeaderTheme } = useHeaderTheme()
@@ -14,10 +17,10 @@ export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
   })
 
   return (
-    <div className="relative -mt-[10.4rem] flex items-end text-white" data-theme="dark">
-      <div className="container mb-8 z-10 relative">
-        <div className="max-w-[34rem]">
-          {richText && <RichText className="mb-6" content={richText} enableGutter={false} />}
+    <div className="relative -mt-[10.4rem] flex items-center   text-white" data-theme="dark">
+      <div className="container mb-8 z-10 relative flex items-center">
+        <div className="max-w-[38rem]">
+          {richText && <RichText className="mb-6 banner-text" content={richText} enableGutter={false} />}
           {Array.isArray(links) && links.length > 0 && (
             <ul className="flex gap-4">
               {links.map(({ link }, i) => {
@@ -30,12 +33,14 @@ export const HighImpactHero = ({ links, media, richText }: Page['hero']) => {
             </ul>
           )}
         </div>
+        <div>
+          <Image src={BannerRight} alt="banner right" style={{marginLeft: 100}}/>
+        </div>
       </div>
-      <div className="min-h-[80vh] select-none">
+      <div className="min-h-[85vh] select-none">
         {media && typeof media === 'object' && (
           <React.Fragment>
             <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
-            <div className="absolute pointer-events-none left-0 bottom-0 w-full h-1/2 bg-gradient-to-t from-black to-transparent" />
           </React.Fragment>
         )}
       </div>

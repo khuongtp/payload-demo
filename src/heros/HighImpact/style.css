@@ -1,0 +1,15 @@
+.banner-text h1 {
+    color: #161C2D;
+    font-size: 60px;
+    font-weight: 700;
+}
+.banner-text p:first-child {
+    color: #F64B4B;
+    font-size: 13px;
+    font-weight: 700;
+}
+.banner-text p:last-child {
+    color: #161C2D;
+    font-size: 19px;
+    font-weight: 400;
+}

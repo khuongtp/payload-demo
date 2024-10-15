@@ -4,19 +4,22 @@ import { CMSLink } from '@/components/Link'
 import type { Header as HeaderType } from '@/payload-types'
 import { SearchIcon } from 'lucide-react'
 import Link from 'next/link'
+import "./style.css"
 
 export const HeaderNav = ({ header }: { header: HeaderType }) => {
   const navItems = header?.navItems || []
 
   return (
-    <nav className="flex gap-3 items-center">
+    <nav className="flex gap-6 items-center nav-header">
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="link" />
       })}
-      <Link href="/search">
+      {/* <Link href="/search">
         <span className="sr-only">Search</span>
         <SearchIcon className="w-5 text-primary" />
       </Link>
+        <SearchIcon className="w-5" />
+      </Link> */}
     </nav>
   )
 }
