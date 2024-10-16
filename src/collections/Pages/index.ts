@@ -20,6 +20,7 @@ import { populatePublishedAt } from '../../hooks/populatePublishedAt'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
 import { revalidatePage } from './hooks/revalidatePage'
 import { CustomContent } from '../../blocks/CustomContent/config'
+import { CustomBanner } from '../../blocks/CustomBanner/config'
 
 export const Pages: CollectionConfig = {
   slug: 'pages',
@@ -77,6 +78,7 @@ export const Pages: CollectionConfig = {
                 FormBlock,
                 Features,
                 CustomContent,
+                CustomBanner,
               ],
               required: true,
             },

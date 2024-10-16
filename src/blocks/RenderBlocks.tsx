@@ -8,6 +8,7 @@ import { TitleBlock } from '@/blocks/Title/Component'
 import type { Page } from '@/payload-types'
 import React, { Fragment } from 'react'
 import { CustomContentBlock } from '@/blocks/CustomContent/Component'
+import { CustomBannerBlock }  from '@/blocks/CustomBanner/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -18,7 +19,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   titleBlock: TitleBlock,
   features: FeaturesBlock,
-
+  customBanner: CustomBannerBlock,
 }
 
 export const RenderBlocks: React.FC<{

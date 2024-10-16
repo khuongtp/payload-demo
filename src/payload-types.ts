@@ -105,6 +105,7 @@ export interface Page {
     | FormBlock
     | FeaturesBlock
     | CustomContentBlock
+    | CustomBannerBlock
   )[];
   meta?: {
     title?: string | null;
@@ -611,6 +612,30 @@ export interface CustomContentBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'customContent';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomBannerBlock".
+ */
+export interface CustomBannerBlock {
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?: {
+            relationTo: 'pages';
+            value: string | Page;
+          } | null;
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customBanner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

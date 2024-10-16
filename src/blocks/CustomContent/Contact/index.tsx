@@ -1,6 +1,4 @@
 'use client'
-import Link from 'next/link'
-import React from 'react'
 
 export const ContactBanner = (props) => {
   const formInput = {
@@ -15,40 +13,6 @@ export const ContactBanner = (props) => {
 
   return (
     <>
-      <div
-        style={{
-          marginTop: '-8rem',
-          backgroundImage:
-            'url(https://kyanon.digital/wp-content/uploads/2021/05/bg-thanh-tich.jpg)',
-          backgroundRepeat: 'repeat',
-          backgroundPosition: 'center center',
-          backgroundSize: 'cover',
-        }}
-      >
-        <div className="flex flex-col items-center text-white capitalize">
-          <div
-            style={{ paddingTop: '6.5rem', paddingBottom: '23px' }}
-            className="text-5xl font-bold"
-          >
-            <h1>contact us</h1>
-          </div>
-          <div style={{ paddingBottom: '5.75rem' }} className="flex">
-            <Link href={'#'}>home</Link>
-            <div
-              style={{
-                width: '7px',
-                height: '7px',
-                borderRight: '2px solid #fff',
-                borderTop: '2px solid #fff',
-                transform: 'rotate(45deg)',
-              }}
-              className="m-2"
-            ></div>
-            <Link href={'#'}>contact us</Link>
-          </div>
-        </div>
-      </div>
-
       <section style={{ margin: '112px 105px 0' }}>
         <section
           style={{
