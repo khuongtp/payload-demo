@@ -583,24 +583,31 @@ export interface Feature {
  * via the `definition` "CustomContentBlock".
  */
 export interface CustomContentBlock {
-  columns?:
-    | {
-        enableLink?: boolean | null;
-        contentLogo: string | Media;
-        link?: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?: {
-            relationTo: 'pages';
-            value: string | Page;
-          } | null;
-          url?: string | null;
-          label: string;
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  home?: {
+    enableHome?: boolean | null;
+    columns?:
+      | {
+          enableLink?: boolean | null;
+          contentLogo: string | Media;
+          link?: {
+            type?: ('reference' | 'custom') | null;
+            newTab?: boolean | null;
+            reference?: {
+              relationTo: 'pages';
+              value: string | Page;
+            } | null;
+            url?: string | null;
+            label: string;
+            appearance?: ('default' | 'outline') | null;
+          };
+          id?: string | null;
+        }[]
+      | null;
+  };
+  contact?: {
+    enableContact?: boolean | null;
+    title?: string | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'customContent';
