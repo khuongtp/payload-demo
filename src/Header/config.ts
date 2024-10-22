@@ -1,6 +1,5 @@
-import { LinkAppearances } from './../fields/link'
-import type { GlobalConfig } from 'payload'
 import { link } from '@/fields/link'
+import type { GlobalConfig } from 'payload'
 import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
@@ -10,14 +9,43 @@ export const Header: GlobalConfig = {
   },
   fields: [
     {
+      name: 'headerTypes',
+      type: 'group',
+      fields: [
+        {
+          name: 'enableDefaultHeader',
+          type: 'checkbox',
+          admin: {
+            condition: (_, { enableCustomHeader }) => Boolean(!enableCustomHeader),
+          },
+        },
+        {
+          name: 'enableCustomHeader',
+          type: 'checkbox',
+          admin: {
+            condition: (_, { enableDefaultHeader }) => Boolean(!enableDefaultHeader),
+          },
+        },
+      ],
+    },
+    {
       name: 'navItems',
       type: 'array',
       fields: [
         link({
           appearances: false,
         }),
+        {
+          name: 'dropdownItems',
+          type: 'array',
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+        },
       ],
-      maxRows: 6,
+      maxRows: 7,
     },
     {
       name: 'buttonItems',
