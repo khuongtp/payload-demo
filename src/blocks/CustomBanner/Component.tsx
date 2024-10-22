@@ -3,43 +3,35 @@ import Link from 'next/link'
 
 type Props = Extract<Page['layout'][0], { blockType: 'customBanner' }>
 
-export const CustomBannerBlock = ({ links }: Props) => {
+const BACKGROUND_IMAGE_URL = 'https://kyanon.digital/wp-content/uploads/2021/05/bg-thanh-tich.jpg'
+
+export const CustomBannerBlock: React.FC<Props> = ({ links }) => {
+  const lastLink = links?.[links.length - 1]?.link
+
   return (
     <div
-      style={{
-        marginTop: '-8rem',
-        backgroundImage: 'url(https://kyanon.digital/wp-content/uploads/2021/05/bg-thanh-tich.jpg)',
-        backgroundRepeat: 'repeat',
-        backgroundPosition: 'center center',
-        backgroundSize: 'cover',
-      }}
+      className="text-white bg-cover bg-center bg-repeat -mt-48"
+      style={{ backgroundImage: `url(${BACKGROUND_IMAGE_URL})` }}
     >
-      <div className="flex flex-col items-center text-white capitalize">
-        <div style={{ paddingTop: '6.5rem', paddingBottom: '23px' }} className="text-5xl font-bold">
-          <h1>{links?.[links.length - 1].link.label}</h1>
+      <div className="mx-auto px-[90px]">
+        <div className="pt-[172px] pb-[23px] px-[15px]">
+          <div className="flex items-center justify-center">
+            <h1 className="font-bold capitalize text-[50px] leading-[58px]">{lastLink?.label}</h1>
+          </div>
         </div>
-        <div style={{ paddingBottom: '5.75rem' }} className="flex">
-          {links?.map((items, index) => {
-            return (
+        <div className="pt-0 px-[15px] pb-[92px]">
+          <div className="flex items-center justify-center text-base capitalize leading-[28px]">
+            {links?.map((item, index) => (
               <>
-                <Link href={items.link.url ?? ''} target={items.link.newTab ? '_blank' : '_self'}>
-                  {items.link.label}
+                <Link href={item.link.url ?? ''} target={item.link.newTab ? '_blank' : '_self'}>
+                  {item.link.label}
                 </Link>
                 {index < links.length - 1 && (
-                  <div
-                    style={{
-                      width: '7px',
-                      height: '7px',
-                      borderRight: '2px solid #fff',
-                      borderTop: '2px solid #fff',
-                      transform: 'rotate(45deg)',
-                    }}
-                    className="m-2"
-                  ></div>
+                  <div className="w-[7px] h-[7px] border-r-2 border-t-2 border-white transform rotate-45 m-3" />
                 )}
               </>
-            )
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </div>
