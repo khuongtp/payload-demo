@@ -1,136 +1,100 @@
 import type { Header as HeaderType } from '@/payload-types'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
+import Image from 'next/image'
 
-export const HeaderCustom = ({ header }: { header: HeaderType }) => {
-  const dropdownArrow = {
-    border: 'solid #323232',
-    borderWidth: '0 1px 1px 0',
-    padding: '2px',
-    display: 'inline-block',
-    transform: 'rotate(45deg)',
-    marginLeft: '8px',
-  }
+const DEFAULT_LOGO = '/api/media/file/kyanon-logo.png'
 
-  const rightArrowImage = {
+const styles = {
+  rightArrowImage: {
     backgroundImage:
       'url(https://kyanon.digital/wp-content/themes/softek/vtm/assets/images/arrow-3.svg)',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '10px center',
-  }
+  },
+  header: {
+    top: 0,
+    zIndex: 1000,
+    boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+  },
+}
 
-  const dropdownItems = {
-    padding: '10px 20px 10px 30px',
-    display: 'block',
-  }
-
-  const navigation = {
-    padding: '22px 10px',
-  }
-
+export const HeaderCustom = ({ header }: { header: HeaderType }) => {
   const { logo, navItems, buttonItems } = header
-  const DEFAULT_LOGO = '/api/media/file/kyanon-logo.png'
   const url = typeof logo === 'string' ? DEFAULT_LOGO : (logo?.url ?? DEFAULT_LOGO)
-  const params = useParams()
-  const slugCurrent = params.slug
+  const { slug: slugCurrent } = useParams()
 
   return (
-    <>
-      <header
-        className="sticky bg-white"
-        style={{
-          top: 0,
-          zIndex: 1000,
-          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-        }}
-      >
-        <div style={{ margin: '0 104px' }}>
-          <div className="flex relative items-center">
-            <div className="flex-shrink-0 absolute" style={{ top: '14px' }}>
-              <a href="#">
-                <img src={url} width={133} height={33} />
-              </a>
-            </div>
-
-            <nav className="flex-grow" style={{ marginRight: '20px' }}>
-              <ul
-                className="flex text-xs font-bold justify-end relative"
-                style={{ color: '#323232', lineHeight: '1.5rem' }}
-              >
-                {navItems?.map((items, i) => {
-                  return (
-                    <li
-                      className={`relative capitalize ${items.dropdownItems?.length ? 'group' : null}`}
-                      style={navigation}
-                      key={i}
-                    >
-                      <Link
-                        href={items.link.url ?? '#'}
-                        target={items.link.newTab ? '_blank' : '_self'}
-                        className={`hover:text-[#f14e4a] ${
-                          slugCurrent == items.link.url ? 'text-[#f14e4a]' : null
-                        } `}
-                      >
-                        {items.link.label}
-                        {items.dropdownItems?.length ? <i style={dropdownArrow}></i> : null}
-                      </Link>
-
-                      {items.dropdownItems?.length ? (
-                        <ul
-                          className="absolute bg-white capitalize hidden group-hover:block"
-                          style={{ top: '100%', minWidth: '285px', left: '-6px' }}
-                        >
-                          {items.dropdownItems.map((items, i) => {
-                            return (
-                              <li
-                                key={i}
-                                className="hover:bg-[#f0413c] hover:text-white"
-                                style={rightArrowImage}
-                              >
-                                <Link
-                                  href={items.link.url ?? '#'}
-                                  target={items.link.newTab ? '_blank' : '_self'}
-                                  style={dropdownItems}
-                                >
-                                  {items.link.label}
-                                </Link>
-                              </li>
-                            )
-                          })}
-                        </ul>
-                      ) : null}
-                    </li>
-                  )
-                })}
-              </ul>
-            </nav>
-
-            {buttonItems?.map((items) => {
-              return (
-                <div className="flex-shrink-0">
-                  <Link
-                    href={items.url ?? '#'}
-                    className="uppercase font-bold"
-                    style={{
-                      fontSize: '12px',
-                      lineHeight: '30px',
-                      background: 'linear-gradient(to right,#ba1419 0%,#ed4f5c 100%)',
-                      color: '#fff',
-                      padding: '4px 18px',
-                      borderRadius: '0.25rem',
-                      display: 'block',
-                      letterSpacing: '-0.25px',
-                      marginLeft: '7px',
-                    }}
-                  >
-                    {items.label}
-                  </Link>
-                </div>
-              )
-            })}
+    <header className="sticky bg-white" style={styles.header}>
+      <div className="mx-[104.5px]">
+        <div className="flex items-center relative">
+          <div className="flex-shrink-0">
+            <Link href="/" className="flex-shrink-0">
+              <Image src={url} width={133} height={33} alt="Logo" />
+            </Link>
           </div>
+
+          <nav className="flex-grow mr-5">
+            <ul className="flex text-xs font-bold justify-end relative text-[#323232] leading-6">
+              {navItems?.map((item, index) => (
+                <li
+                  className={`relative capitalize px-[10px] py-[22px] ${item.dropdownItems?.length ? 'group' : ''}`}
+                  key={index}
+                >
+                  <Link
+                    href={item.link.url ?? '#'}
+                    target={item.link.newTab ? '_blank' : '_self'}
+                    className={`hover:text-[#f14e4a] ${slugCurrent === item.link.url ? 'text-[#f14e4a]' : ''}`}
+                  >
+                    {item.link.label}
+                    {item.dropdownItems?.length ? (
+                      <i className="border-solid border-gray-800 border-r border-b p-0.5 inline-block transform rotate-45 ml-2"></i>
+                    ) : (
+                      ''
+                    )}
+                  </Link>
+
+                  {item.dropdownItems?.length ? (
+                    <ul
+                      className="absolute bg-white capitalize hidden group-hover:block"
+                      style={{ top: '100%', minWidth: '285px', left: '-6px' }}
+                    >
+                      {item.dropdownItems.map((dropdownItem, dropdownIndex) => (
+                        <li
+                          key={dropdownIndex}
+                          className="hover:bg-[#f0413c] hover:text-white"
+                          style={styles.rightArrowImage}
+                        >
+                          <Link
+                            className="py-[10px] pr-5 pl-[30px] block"
+                            href={dropdownItem.link.url ?? '#'}
+                            target={dropdownItem.link.newTab ? '_blank' : '_self'}
+                          >
+                            {dropdownItem.link.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : (
+                    ''
+                  )}
+                </li>
+              ))}
+            </ul>
+          </nav>
+
+          {buttonItems?.map((item, index) => (
+            <div key={index} className="flex-shrink-0">
+              <Link
+                href={item.url ?? '#'}
+                className="uppercase font-bold text-xs leading-[30px] bg-gradient-to-r from-[#ba1419] to-[#ed4f5c] text-white px-[18px] py-[4px] rounded block tracking-[-0.25px] ml-[7px]"
+              >
+                {item.label}
+              </Link>
+            </div>
+          ))}
         </div>
-      </header>
-    </>
+      </div>
+    </header>
   )
 }
